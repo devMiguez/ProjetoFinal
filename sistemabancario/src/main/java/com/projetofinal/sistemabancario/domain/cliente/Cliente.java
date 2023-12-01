@@ -3,6 +3,8 @@ package com.projetofinal.sistemabancario.domain.cliente;
 import java.math.BigDecimal;
 import java.util.UUID;
 
+import com.projetofinal.sistemabancario.dtos.ClienteDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -32,17 +34,23 @@ public class Cliente {
     private String sobrenome;
 
     @Column(unique = true)
-    private String documento;
+    private String cpf_cnpj;
 
     @Column(unique = true)
     private String email;
     private Integer senha;
 
-    private BigDecimal saldo;
-
     @Enumerated(EnumType.STRING)
     private TipoCliente tipoCliente;
 
+    public Cliente(ClienteDTO data){
+        this.nome = data.nome();
+        this.sobrenome = data.sobrenome();
+        this.cpf_cnpj = data.cpf_cnpj();
+        this.email = data.email();
+        this.senha = data.senha();
+        this.tipoCliente = data.tipoCliente();
+    }
 
 
 }
