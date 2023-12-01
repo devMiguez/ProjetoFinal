@@ -48,12 +48,7 @@ public class Conta {
     @Enumerated(EnumType.STRING)
     private StatusConta statusConta;
 
-    public Conta(ContaDTO data){
-        this.cliente = data.cliente();
-        this.tipoDaConta = data.tipoDaConta();
-        this.saldo = data.saldo();
-        this.statusConta = data.statusConta();
-    }
+
 
 
 }

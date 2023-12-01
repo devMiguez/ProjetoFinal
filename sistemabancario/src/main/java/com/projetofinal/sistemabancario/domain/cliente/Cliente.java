@@ -3,6 +3,7 @@ package com.projetofinal.sistemabancario.domain.cliente;
 import java.math.BigDecimal;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.projetofinal.sistemabancario.dtos.ClienteDTO;
 
 import jakarta.persistence.Column;

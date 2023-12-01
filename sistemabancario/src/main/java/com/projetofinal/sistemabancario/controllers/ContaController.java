@@ -10,23 +10,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.projetofinal.sistemabancario.domain.conta.Conta;
 import com.projetofinal.sistemabancario.dtos.ContaDTO;
+import com.projetofinal.sistemabancario.services.ClienteService;
 import com.projetofinal.sistemabancario.services.ContaService;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/conta")
+@RequestMapping("/contas")
 public class ContaController {
     
 
     @Autowired
     private ContaService contaService;
 
+    @Autowired
+    private ClienteService clienteService;
+
     //Métodos abaixo para a criação de uma conta após o cadastro de um cliente 
 
-    @PostMapping("/conta/id")
-    public ResponseEntity<Conta> criarConta(@RequestBody @Valid ContaDTO contaDto){
+    @PostMapping
+    public ResponseEntity<Conta> criarConta(@RequestBody @Valid ContaDTO contaDto) throws Exception{
+         
         Conta novaConta = this.contaService.criarConta(contaDto);
+
         return new ResponseEntity<>(novaConta, HttpStatus.CREATED);
     }
 

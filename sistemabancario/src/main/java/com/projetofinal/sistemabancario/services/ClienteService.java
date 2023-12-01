@@ -2,6 +2,7 @@ package com.projetofinal.sistemabancario.services;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,9 @@ public class ClienteService {
         return this.clienteRepository.findById(id).orElseThrow(
             () -> new RuntimeException("Cliente não encontrado"));
     }
+
+
+
 
     //Método para atualizar cliente 
     public Cliente atualizarCliente(UUID id, ClienteDTO clienteDTO) {
@@ -92,5 +96,6 @@ public class ClienteService {
     public void salvarCliente(Cliente cliente){
         this.clienteRepository.save(cliente);
     }
+
 
 }

@@ -14,12 +14,33 @@ public class ContaService {
     @Autowired
     private ContaRepository contaRepository;
 
+    @Autowired
+    private ClienteService clienteService;
+
     //Cria uma nova conta
-    public Conta criarConta(ContaDTO contaDto) {
-        var contaNova = new Conta(contaDto);
-        this.salvarConta(contaNova);
-        return contaNova;
+    public Conta criarConta(ContaDTO contaDto) throws Exception{
+        Cliente clienteDaConta = this.clienteService.findClienteById(contaDto.cliente_id());
+
+        if(clienteDaConta == null){
+            throw new Exception("cliente não encontrado");
+        }
+
+        // Se o cliente existe, continue com a criação da conta
+        Conta novaConta = new Conta();
+        novaConta.setCliente(clienteDaConta);
+        novaConta.setTipoDaConta(contaDto.tipoDaConta());
+        novaConta.setSaldo(contaDto.saldo());
+        novaConta.setStatusConta(contaDto.statusConta());
+
+        // Salve a conta no repositório
+        this.salvarConta(novaConta);
+
+        // Retorne a conta recém-criada ou faça o que for apropriado no seu caso
+        return novaConta;
+
     }
+
+    
 
     //Método que salva a conta no repositório
     public void salvarConta(Conta conta){
