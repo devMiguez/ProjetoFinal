@@ -89,6 +89,18 @@ public class ContaService {
 
     }
 
+    //Método para deletar conta caso necessário
+    public Conta deletaConta(UUID id) throws Exception{
+        Conta contaExistente = contaRepository.findById(id).orElseThrow(
+            () -> new RuntimeException("Conta não encontrada"));
+
+        
+        contaRepository.delete(contaExistente);
+
+        return contaExistente   ;
+        
+    }
+
     
     //Método que salva a conta no repositório
     public void salvarConta(Conta conta){

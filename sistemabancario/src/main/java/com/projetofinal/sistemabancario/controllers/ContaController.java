@@ -7,6 +7,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,6 +58,15 @@ public class ContaController {
     public ResponseEntity<Conta> atualizaConta(@PathVariable UUID id, @RequestBody ContaDTO contaDto) throws Exception{
         Conta conta = this.contaService.atualizaConta(id, contaDto);
 
+
+        return new ResponseEntity<>(conta, HttpStatus.OK);
+
+    }
+
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Conta> deletaConta(@PathVariable UUID id) throws Exception{
+        Conta conta = this.contaService.deletaConta(id);
 
         return new ResponseEntity<>(conta, HttpStatus.OK);
 
