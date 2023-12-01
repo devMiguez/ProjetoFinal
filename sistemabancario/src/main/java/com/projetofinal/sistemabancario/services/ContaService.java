@@ -1,5 +1,7 @@
 package com.projetofinal.sistemabancario.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +42,9 @@ public class ContaService {
 
     }
 
+    public List<Conta> getAllContas(){
+        return contaRepository.findAll();
+    }
     
 
     //Método que salva a conta no repositório
