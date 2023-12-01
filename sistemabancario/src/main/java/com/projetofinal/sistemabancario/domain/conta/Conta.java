@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 import com.projetofinal.sistemabancario.domain.cliente.Cliente;
+import com.projetofinal.sistemabancario.dtos.ContaDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -37,9 +38,22 @@ public class Conta {
     private Cliente cliente;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private TipoDaConta tipoDaConta;
 
+    @Column(nullable = false)
     private BigDecimal saldo;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private StatusConta statusConta;
+
+    public Conta(ContaDTO data){
+        this.cliente = data.cliente();
+        this.tipoDaConta = data.tipoDaConta();
+        this.saldo = data.saldo();
+        this.statusConta = data.statusConta();
+    }
 
 
 }

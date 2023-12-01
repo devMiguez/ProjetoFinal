@@ -24,7 +24,7 @@ import com.projetofinal.sistemabancario.services.ClienteService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/cliente")
+@RequestMapping("/clientes")
 public class ClienteController {
     
     @Autowired

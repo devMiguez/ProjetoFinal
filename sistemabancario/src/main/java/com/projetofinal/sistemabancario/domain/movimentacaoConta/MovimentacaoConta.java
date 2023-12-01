@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import com.projetofinal.sistemabancario.domain.conta.Conta;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -34,12 +35,16 @@ public class MovimentacaoConta {
     @JoinColumn(name = "id_conta")
     private Conta conta;
 
+    @Column(unique = true, nullable = false)
     private Integer numeroDaTransacao;
 
+    @Column(nullable = false)
     private Date dataDaTransacao;
 
+    @Column(nullable = false)
     private TipoDaTransacao tipoDaTransacao;
 
+    @Column(nullable = false)
     private BigDecimal valorDaTransacao;    
 
 
