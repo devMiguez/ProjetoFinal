@@ -16,7 +16,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@Entity
+@Entity(name = "clientes")
 @Table(name ="clientes")
 @Data
 @NoArgsConstructor
@@ -26,7 +26,7 @@ public class Cliente {
     
     @Id
     @GeneratedValue(strategy =  GenerationType.AUTO)
-    private UUID id;
+    private UUID id_cliente;
 
     private String nome;
     private String sobrenome;
