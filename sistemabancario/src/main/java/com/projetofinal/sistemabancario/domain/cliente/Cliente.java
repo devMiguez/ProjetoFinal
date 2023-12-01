@@ -30,17 +30,21 @@ public class Cliente {
     @GeneratedValue(strategy =  GenerationType.AUTO)
     private UUID id_cliente;
 
+    @Column(nullable = false)
     private String nome;
+    @Column(nullable = false)
     private String sobrenome;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String cpf_cnpj;
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String email;
+    @Column(nullable = false)
     private Integer senha;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private TipoCliente tipoCliente;
 
     public Cliente(ClienteDTO data){
