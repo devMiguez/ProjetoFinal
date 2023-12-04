@@ -1,4 +1,4 @@
-package com.projetofinal.sistemabancario.domain.movimentacaoConta;
+package com.projetofinal.sistemabancario.enums;
 
 public enum TipoDaTransacao {
     SAQUE, DEPOSITO, TRANSFERENCIA;

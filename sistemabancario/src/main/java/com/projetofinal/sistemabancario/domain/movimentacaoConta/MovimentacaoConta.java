@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.util.UUID;
 
 import com.projetofinal.sistemabancario.domain.conta.Conta;
+import com.projetofinal.sistemabancario.enums.TipoDaTransacao;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -5,6 +5,8 @@ import java.util.UUID;
 
 import com.projetofinal.sistemabancario.domain.cliente.Cliente;
 import com.projetofinal.sistemabancario.dtos.ContaDTO;
+import com.projetofinal.sistemabancario.enums.StatusConta;
+import com.projetofinal.sistemabancario.enums.TipoDaConta;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

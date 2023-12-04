@@ -1,6 +1,6 @@
 package com.projetofinal.sistemabancario.dtos;
 
-import com.projetofinal.sistemabancario.domain.cliente.TipoCliente;
+import com.projetofinal.sistemabancario.enums.TipoCliente;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

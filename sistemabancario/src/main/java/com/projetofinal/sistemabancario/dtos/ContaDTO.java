@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 import com.projetofinal.sistemabancario.domain.cliente.Cliente;
-import com.projetofinal.sistemabancario.domain.conta.StatusConta;
-import com.projetofinal.sistemabancario.domain.conta.TipoDaConta;
+import com.projetofinal.sistemabancario.enums.StatusConta;
+import com.projetofinal.sistemabancario.enums.TipoDaConta;
 
 import jakarta.validation.constraints.NotNull;
 

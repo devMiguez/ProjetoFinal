@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.projetofinal.sistemabancario.domain.cliente.Cliente;
-import com.projetofinal.sistemabancario.domain.cliente.TipoCliente;
 import com.projetofinal.sistemabancario.dtos.ClienteDTO;
+import com.projetofinal.sistemabancario.enums.TipoCliente;
 import com.projetofinal.sistemabancario.repositories.ClienteRepository;
 
 @Service
