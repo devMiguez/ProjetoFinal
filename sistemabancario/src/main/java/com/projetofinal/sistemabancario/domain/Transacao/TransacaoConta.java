@@ -1,11 +1,10 @@
-package com.projetofinal.sistemabancario.domain.movimentacaoConta;
+package com.projetofinal.sistemabancario.domain.Transacao;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import com.projetofinal.sistemabancario.domain.conta.Conta;
-import com.projetofinal.sistemabancario.enums.TipoDaTransacao;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,33 +19,35 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "movimentacaoConta")
-@Table(name = "movimentacaoConta")
+@Entity(name = "transacoes")
+@Table(name = "transacoes")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class MovimentacaoConta {
+public class TransacaoConta {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "id_conta")
-    private Conta conta;
+    @JoinColumn(name = "id_conta_origem")
+    private Conta contaOrigem;
+
+    @ManyToOne
+    @JoinColumn(name = "id_conta_destino")
+    private Conta contaDestino;
 
     @Column(unique = true, nullable = false)
-    private Integer numeroDaTransacao;
+    private Long numeroTransacao;
 
     @Column(nullable = false)
-    private Date dataDaTransacao;
+    private LocalDateTime dataTransacao;
 
     @Column(nullable = false)
-    private TipoDaTransacao tipoDaTransacao;
+    private BigDecimal valorDaTransacao;
 
-    @Column(nullable = false)
-    private BigDecimal valorDaTransacao;    
 
 
 

@@ -1,5 +1,6 @@
 package com.projetofinal.sistemabancario.services;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 import com.projetofinal.sistemabancario.domain.cliente.Cliente;
 import com.projetofinal.sistemabancario.domain.conta.Conta;
 import com.projetofinal.sistemabancario.dtos.ContaDTO;
+import com.projetofinal.sistemabancario.enums.StatusConta;
+import com.projetofinal.sistemabancario.enums.TipoDaConta;
 import com.projetofinal.sistemabancario.repositories.ContaRepository;
 
 @Service
@@ -44,6 +47,7 @@ public class ContaService {
         return novaConta;
 
     }
+
 
     //Método para pegar todas as contas criadas
     public List<Conta> getAllContas(){
@@ -105,6 +109,24 @@ public class ContaService {
     //Método que salva a conta no repositório
     public void salvarConta(Conta conta){
         this.contaRepository.save(conta);
+    }
+
+
+    //Validações para transação
+    public void validaTransacao(Conta contaOrigem, BigDecimal saldo) throws Exception{
+
+        if(contaOrigem.getTipoDaConta() != TipoDaConta.CORRENTE){  
+            throw new Exception("Voc~e não pode realizar transações da sua conta poupança!!");
+        }
+
+        if(contaOrigem.getSaldo().compareTo(saldo) < 0){
+            throw new Exception("Saldo insuficente!!");
+        }
+
+        if(contaOrigem.getStatusConta() != StatusConta.ATIVA){
+            throw new Exception("Essa conta não pode realizar transações, conta inativa");
+        }
+
     }
 
 }

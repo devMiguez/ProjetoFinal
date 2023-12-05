@@ -1,8 +1,6 @@
 package com.projetofinal.sistemabancario.services;
 
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.projetofinal.sistemabancario.domain.cliente.Cliente;
 import com.projetofinal.sistemabancario.dtos.ClienteDTO;
-import com.projetofinal.sistemabancario.enums.TipoCliente;
 import com.projetofinal.sistemabancario.repositories.ClienteRepository;
 
 @Service
@@ -18,6 +15,11 @@ public class ClienteService {
     
     @Autowired
     private ClienteRepository clienteRepository;
+
+    //Método para criar buscar um cliente pelo cpf ou cnpj
+    // public Cliente findClienteByCpf_cnpj(String cpf_cnpj) {
+    //     return this.clienteRepository.findByCpf_cnpj(cpf_cnpj);
+    // }
 
 
     //Método para criação de cliente
