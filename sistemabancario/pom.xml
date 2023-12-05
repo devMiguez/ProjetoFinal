@@ -51,6 +51,20 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-mail</artifactId>
+    		<version>3.2.0</version>
+		</dependency>
+
+		<dependency>
+ 			<groupId>jakarta.mail</groupId>
+    		<artifactId>jakarta.mail-api</artifactId>
+    		<version>2.1.2</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
