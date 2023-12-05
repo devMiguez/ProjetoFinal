@@ -39,7 +39,7 @@ public class TransacaoController {
 
         BeanUtils.copyProperties(data, novaTransacao);
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(novaTransacao, HttpStatus.CREATED);
 
     }
 
