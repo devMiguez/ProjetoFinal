@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.projetofinal.sistemabancario.domain.cliente.Cliente;
@@ -40,7 +38,7 @@ public class ContaService {
         novaConta.setSaldo(contaDto.saldo());
         novaConta.setStatusConta(contaDto.statusConta());
 
-        // Salve a conta no repositório
+        // Salvar a conta no repositório
         this.salvarConta(novaConta);
 
         // Retorne a conta recém-criada ou faça o que for apropriado no seu caso
@@ -116,7 +114,7 @@ public class ContaService {
     public void validaTransacao(Conta contaOrigem, BigDecimal saldo) throws Exception{
 
         if(contaOrigem.getTipoDaConta() != TipoDaConta.CORRENTE){  
-            throw new Exception("Voc~e não pode realizar transações da sua conta poupança!!");
+            throw new Exception("Você não pode realizar transações da sua conta poupança!!");
         }
 
         if(contaOrigem.getSaldo().compareTo(saldo) < 0){

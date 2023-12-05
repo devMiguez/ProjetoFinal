@@ -20,19 +20,15 @@ import com.projetofinal.sistemabancario.services.TransacaoService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/movimentacao")
+@RequestMapping("/transacao")
 public class TransacaoController {
 
 
     @Autowired
     private TransacaoService transacaoService;
 
-    @Autowired
-    private ContaService contaService;
 
-
-    
-    @PostMapping("/transferencia")
+    @PostMapping
     public ResponseEntity<TransacaoConta> criarTransacao(@RequestBody @Valid TransacaoDTO data) throws Exception {
         
         TransacaoConta novaTransacao = transacaoService.criarTransacao(data);
@@ -43,7 +39,7 @@ public class TransacaoController {
 
     }
 
-    @GetMapping("/transferencia/all")
+    @GetMapping("/all")
     public ResponseEntity<List<TransacaoConta>> getAllTransferencias() {
         List<TransacaoConta> listaTransferencias = this.transacaoService.getAllTransferencias(); 
         return new ResponseEntity<>(listaTransferencias, HttpStatus.OK);

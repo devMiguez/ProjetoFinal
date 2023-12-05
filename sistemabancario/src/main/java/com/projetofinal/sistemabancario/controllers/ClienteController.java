@@ -34,7 +34,7 @@ public class ClienteController {
 
     @CrossOrigin(origins = "*", allowedHeaders = "*") 
     @PostMapping
-    public ResponseEntity<Cliente> criaCliente(@RequestBody @Valid ClienteDTO cliente){
+    public ResponseEntity<Cliente> criaCliente(@RequestBody @Valid ClienteDTO cliente) throws Exception{
         Cliente novoCliente = clienteService.criarCliente(cliente);
 
         BeanUtils.copyProperties(cliente, novoCliente);
@@ -59,7 +59,7 @@ public class ClienteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cliente> atualizaCliente(@PathVariable UUID id, @RequestBody @Valid ClienteDTO clienteDTO){
+    public ResponseEntity<Cliente> atualizaCliente(@PathVariable UUID id, @RequestBody @Valid ClienteDTO clienteDTO) throws Exception{
         Cliente clienteAtualizado = clienteService.atualizarCliente(id, clienteDTO);
 
         BeanUtils.copyProperties(clienteDTO, clienteAtualizado);

@@ -41,12 +41,12 @@ public class TransacaoService {
         novaTransacao.setDataTransacao(LocalDateTime.now());
         novaTransacao.setValorDaTransacao(data.valor());
 
-        // Obter informações do cliente associado à conta de origem
+        // Pegar as informações do cliente associado à conta de origem
         Cliente clienteOrigem = contaOrigem.getCliente();
         String emailClienteOrigem = clienteOrigem.getEmail();
         String nomeClienteOrigem = clienteOrigem.getNome();
 
-        // Obter informações do cliente associado à conta de destino
+        // Pegar as informações do cliente associado à conta de destino
         Cliente clienteDestino = contaDestino.getCliente();
         String emailClienteDestino = clienteDestino.getEmail();
         String nomeClienteDestino = clienteDestino.getNome();
@@ -55,10 +55,12 @@ public class TransacaoService {
         contaOrigem.setSaldo(contaDestino.getSaldo().subtract(data.valor()));
         contaDestino.setSaldo(contaDestino.getSaldo().add(data.valor()));
     
+        //Salvando a transação e as mudanças nas contas origem e destino
         transacaoRepository.save(novaTransacao);
         this.contaService.salvarConta(contaOrigem);
         this.contaService.salvarConta(contaDestino);
 
+        //Enviando um email para o cliente de origem e o cliente de destino
         emailService.enviarEmail(emailClienteOrigem, "Transferência de Saldo", "Transferência de " + data.valor() + " para " + nomeClienteDestino + "" + " do email: " + " " + emailClienteDestino);
         emailService.enviarEmail(emailClienteDestino, "Recebimento de Transferência", "Recebimento de " + data.valor() + " de " + nomeClienteOrigem + "" + " do email: " + " " + emailClienteOrigem);
 
