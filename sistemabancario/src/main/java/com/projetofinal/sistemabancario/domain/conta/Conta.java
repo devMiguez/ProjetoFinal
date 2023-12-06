@@ -1,8 +1,12 @@
 package com.projetofinal.sistemabancario.domain.conta;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.projetofinal.sistemabancario.domain.Transacao.TransacaoConta;
 import com.projetofinal.sistemabancario.domain.cliente.Cliente;
 import com.projetofinal.sistemabancario.enums.StatusConta;
 import com.projetofinal.sistemabancario.enums.TipoDaConta;
@@ -16,6 +20,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,6 +41,7 @@ public class Conta {
 
     @ManyToOne
     @JoinColumn(name = "id_cliente")
+    @JsonBackReference
     private Cliente cliente;
 
     @Enumerated(EnumType.STRING)
@@ -48,6 +54,12 @@ public class Conta {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusConta statusConta;
+
+
+    //mappedby
+    @OneToMany(mappedBy = "contaDestino")
+    @JsonManagedReference
+    private List<TransacaoConta> transacoes;
 
 
 

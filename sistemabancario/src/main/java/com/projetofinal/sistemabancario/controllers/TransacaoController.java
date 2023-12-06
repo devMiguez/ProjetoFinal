@@ -23,7 +23,6 @@ import jakarta.validation.Valid;
 @RequestMapping("/transacao")
 public class TransacaoController {
 
-
     @Autowired
     private TransacaoService transacaoService;
 
@@ -44,6 +43,8 @@ public class TransacaoController {
         List<TransacaoConta> listaTransferencias = this.transacaoService.getAllTransferencias(); 
         return new ResponseEntity<>(listaTransferencias, HttpStatus.OK);
     }
+
+    //Método get para pegar as transações feitas por uma conta, enviadas ou recebidas (extrato)
 
 
 

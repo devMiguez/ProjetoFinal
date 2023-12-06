@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.projetofinal.sistemabancario.domain.conta.Conta;
 
 import jakarta.persistence.Column;
@@ -33,10 +34,12 @@ public class TransacaoConta {
 
     @ManyToOne
     @JoinColumn(name = "id_conta_origem")
+    @JsonBackReference
     private Conta contaOrigem;
 
     @ManyToOne
     @JoinColumn(name = "id_conta_destino")
+    @JsonBackReference
     private Conta contaDestino;
 
     @Column(unique = true, nullable = false)
