@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.projetofinal.sistemabancario.domain.Transacao.TransacaoConta;
 import com.projetofinal.sistemabancario.domain.cliente.Cliente;
 import com.projetofinal.sistemabancario.domain.conta.Conta;
 import com.projetofinal.sistemabancario.dtos.ContaDTO;
@@ -22,6 +23,9 @@ public class ContaService {
 
     @Autowired
     private ClienteService clienteService;
+
+    
+
 
     //Cria uma nova conta
     public Conta criarConta(ContaDTO contaDto) throws Exception{
@@ -107,6 +111,17 @@ public class ContaService {
     //Método que salva a conta no repositório
     public void salvarConta(Conta conta){
         this.contaRepository.save(conta);
+    }
+
+
+    //Método para pegar o extrato de determinada conta
+    public List<TransacaoConta> getExtratoDaConta(UUID id){
+        Conta contaExistente = contaRepository.findById(id).orElseThrow(
+            () -> new RuntimeException("Conta não encontrada"));
+        
+        contaExistente.getTransacoes();
+
+        return contaExistente.getTransacoes();
     }
 
 

@@ -3,7 +3,6 @@ package com.projetofinal.sistemabancario.controllers;
 import java.util.List;
 import java.util.UUID;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.projetofinal.sistemabancario.domain.Transacao.TransacaoConta;
 import com.projetofinal.sistemabancario.domain.conta.Conta;
 import com.projetofinal.sistemabancario.dtos.ContaDTO;
-import com.projetofinal.sistemabancario.services.ClienteService;
 import com.projetofinal.sistemabancario.services.ContaService;
 
 import jakarta.validation.Valid;
@@ -52,6 +51,12 @@ public class ContaController {
     public ResponseEntity<Conta> getContaById(@PathVariable UUID id){
         Conta conta = this.contaService.getContaById(id);
         return new ResponseEntity<>(conta, HttpStatus.OK);
+    }
+
+    @GetMapping("/extrato/{id}")
+    public ResponseEntity<List<TransacaoConta>> getExtratoDaConta(@PathVariable UUID id){
+        List<TransacaoConta> extrato = this.contaService.getExtratoDaConta(id);
+        return new ResponseEntity<>(extrato, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")

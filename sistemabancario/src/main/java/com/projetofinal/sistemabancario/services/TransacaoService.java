@@ -66,6 +66,7 @@ public class TransacaoService {
 
         return novaTransacao;
     }
+ 
 
     //Método que vai retornar todas as transações feitas:
     public List<TransacaoConta> getAllTransferencias(){
