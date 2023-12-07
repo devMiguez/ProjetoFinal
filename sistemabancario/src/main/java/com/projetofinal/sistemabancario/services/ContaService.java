@@ -24,30 +24,26 @@ public class ContaService {
     @Autowired
     private ClienteService clienteService;
 
+
+    public Conta criarConta(ContaDTO contaDto) throws Exception {
+        Cliente clienteDaConta = this.clienteService.findClienteByCpfCnpj(contaDto.cpfCnpjDoCliente());
     
-
-
-    //Cria uma nova conta
-    public Conta criarConta(ContaDTO contaDto) throws Exception{
-        Cliente clienteDaConta = this.clienteService.findClienteById(contaDto.cliente_id());
-
-        if(clienteDaConta == null){
-            throw new Exception("cliente não encontrado");
+        if (clienteDaConta == null) {
+            throw new Exception("Cliente não encontrado");
         }
-
+    
         // Se o cliente existe, continue com a criação da conta
         Conta novaConta = new Conta();
-        novaConta.setCliente(clienteDaConta);
+        novaConta.setCpfCnpjDoCliente(clienteDaConta);
         novaConta.setTipoDaConta(contaDto.tipoDaConta());
         novaConta.setSaldo(contaDto.saldo());
         novaConta.setStatusConta(contaDto.statusConta());
-
+    
         // Salvar a conta no repositório
         this.salvarConta(novaConta);
-
+    
         // Retorne a conta recém-criada ou faça o que for apropriado no seu caso
         return novaConta;
-
     }
 
 
@@ -71,9 +67,9 @@ public class ContaService {
             () -> new RuntimeException("Conta não encontrada"));
 
         // Atualizar os dados da conta com base no DTO recebido
-        if (contaDto.cliente_id()!= null) {
-            Cliente clienteDaConta = this.clienteService.findClienteById(contaDto.cliente_id());
-            contaExistente.setCliente(clienteDaConta);
+        if (contaDto.cpfCnpjDoCliente()!= null) {
+            Cliente clienteDaConta = this.clienteService.findClienteByCpfCnpj(contaDto.cpfCnpjDoCliente());
+            contaExistente.setCpfCnpjDoCliente(clienteDaConta);
         }
 
         if (contaDto.saldo()!= null) {

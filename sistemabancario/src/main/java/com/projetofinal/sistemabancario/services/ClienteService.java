@@ -17,9 +17,9 @@ public class ClienteService {
     private ClienteRepository clienteRepository;
 
     //Método para criar buscar um cliente pelo cpf ou cnpj
-    // public Cliente findClienteByCpf_cnpj(String cpf_cnpj) {
-    //     return this.clienteRepository.findByCpf_cnpj(cpf_cnpj);
-    // }
+    public Cliente findClienteByCpfCnpj(String cpfCnpj) {
+        return this.clienteRepository.findByCpfCnpj(cpfCnpj);
+    }
 
 
     //Método para criação de cliente
@@ -59,8 +59,8 @@ public class ClienteService {
             clienteExistente.setSobrenome(clienteDTO.sobrenome());
         }
 
-        if (clienteDTO.cpf_cnpj() != null) {
-            clienteExistente.setCpf_cnpj(clienteDTO.cpf_cnpj());
+        if (clienteDTO.cpfCnpj() != null) {
+            clienteExistente.setCpfCnpj(clienteDTO.cpfCnpj());
         }
 
         if (clienteDTO.email() != null) {

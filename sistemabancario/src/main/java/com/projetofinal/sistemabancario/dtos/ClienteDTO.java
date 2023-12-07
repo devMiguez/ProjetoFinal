@@ -14,7 +14,7 @@ public record ClienteDTO(
     String sobrenome,
 
     @NotBlank
-    String cpf_cnpj,
+    String cpfCnpj,
 
     @NotBlank
     String email,

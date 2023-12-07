@@ -42,12 +42,12 @@ public class TransacaoService {
         novaTransacao.setValorDaTransacao(data.valor());
 
         // Pegar as informações do cliente associado à conta de origem
-        Cliente clienteOrigem = contaOrigem.getCliente();
+        Cliente clienteOrigem = contaOrigem.getCpfCnpjDoCliente();
         String emailClienteOrigem = clienteOrigem.getEmail();
         String nomeClienteOrigem = clienteOrigem.getNome();
 
         // Pegar as informações do cliente associado à conta de destino
-        Cliente clienteDestino = contaDestino.getCliente();
+        Cliente clienteDestino = contaDestino.getCpfCnpjDoCliente();
         String emailClienteDestino = clienteDestino.getEmail();
         String nomeClienteDestino = clienteDestino.getNome();
 

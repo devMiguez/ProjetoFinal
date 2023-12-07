@@ -11,5 +11,5 @@ import com.projetofinal.sistemabancario.domain.cliente.Cliente;
 
 public interface ClienteRepository extends JpaRepository<Cliente, UUID>{
     
-    //Cliente findByCpf_cnpj(String cpf_cnpj);
+    Cliente findByCpfCnpj(String cpfCnpj);
 }

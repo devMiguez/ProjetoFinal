@@ -42,7 +42,7 @@ public class Cliente {
     private String sobrenome;
 
     @Column(unique = true, nullable = false)
-    private String cpf_cnpj;
+    private String cpfCnpj;
 
     @Column(unique = true, nullable = false)
     private String email;
@@ -53,14 +53,14 @@ public class Cliente {
     @Column(nullable = false)
     private TipoCliente tipoCliente;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cpfCnpjDoCliente")
     @JsonManagedReference
     private List<Conta> contas;
 
     public Cliente(ClienteDTO data){
         this.nome = data.nome();
         this.sobrenome = data.sobrenome();
-        this.cpf_cnpj = data.cpf_cnpj();
+        this.cpfCnpj = data.cpfCnpj();
         this.email = data.email();
         this.senha = data.senha();
         this.tipoCliente = data.tipoCliente();

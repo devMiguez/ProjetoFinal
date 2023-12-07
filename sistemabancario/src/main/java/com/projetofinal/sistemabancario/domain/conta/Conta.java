@@ -40,9 +40,9 @@ public class Conta {
     private UUID id_conta;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente")
+    @JoinColumn(name = "CpfCnpjDoCliente")
     @JsonBackReference
-    private Cliente cliente;
+    private Cliente cpfCnpjDoCliente;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

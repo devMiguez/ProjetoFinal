@@ -12,7 +12,7 @@ import jakarta.validation.constraints.NotNull;
 public record ContaDTO(
 
     @NotNull
-    UUID cliente_id,
+    String cpfCnpjDoCliente,
 
     @NotNull
     TipoDaConta tipoDaConta,
