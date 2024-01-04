@@ -28,7 +28,7 @@ Make sure you have Java and Spring Boot installed on your machine before getting
 
 ### Frontend
 
-- Access the front-end project being developed at: `https://github.com/devMiguez/FrontProjetoFinal`.
+- Access the front-end project being developed at: https://github.com/devMiguez/FrontProjetoFinal
 
 ## How to Run
 
